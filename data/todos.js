@@ -5,6 +5,8 @@ const todosData = [
         isCompleted: true,
         isToday: true,
         hour: '10:00',
+        reminderDate: '2026-01-08',
+        reminderTime: '09:00',
     },
     {
         id: 2,
@@ -12,6 +14,8 @@ const todosData = [
         isCompleted: false,
         isToday: false,
         hour: '11:00',
+        reminderDate: '2026-01-08',
+        reminderTime: '11:30',
     },
     {
         id: 3,

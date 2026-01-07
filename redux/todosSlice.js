@@ -20,13 +20,12 @@ export const todosSlice = createSlice({
             state.todos = state.todos.filter(todo => !todo.isCompleted);
         },
         updateTodoReducer: (state, action) => {
-           //toggle is completed
             state.todos = state.todos.map(todo => {
                 if (todo.id === action.payload.id) {
-                    todo.isCompleted = !todo.isCompleted;
+                    return { ...todo, ...action.payload };
                 }
                 return todo;
-            }); 
+            });
         },
         deleteTodoReducer: (state, action) => {
             const id = action.payload;

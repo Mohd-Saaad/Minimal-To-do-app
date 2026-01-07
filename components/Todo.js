@@ -13,11 +13,12 @@ export default function Todo({
     isCompleted,
     isToday,
     hour,
+    reminderDate,
+    reminderTime,
 }) {
-  const [localHour, setLocalHour] = React.useState(new Date(hour));
   const todos = useSelector(state => state.todos.todos);
   const dispatch = useDispatch();
-  const [thisTodoIsToday, setThisTodoIsToday] = hour ? React.useState(moment(hour).isSame(moment(), 'day')) : React.useState(false);
+  const [thisTodoIsToday, setThisTodoIsToday] = hour ? React.useState(moment(hour, 'HH:mm').isSame(moment(), 'day')) : React.useState(false);
 
   const handleDeleteTodo = async () => {
     dispatch(deleteTodoReducer(id));
@@ -36,18 +37,25 @@ export default function Todo({
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Checkbox id={id} text={text} hour={hour} isCompleted={isCompleted} isToday={thisTodoIsToday}/>
             <View style={{flex: 1}}>
-              <Text 
+              <Text
                 selectable
                 style={
-                isCompleted 
+                isCompleted
                   ? [styles.text, {textDecorationLine: 'line-through', color: '#73737330'}]
                   : styles.text}
               >{text}</Text>
               <Text style={
-                isCompleted 
+                isCompleted
                   ? [styles.time, {textDecorationLine: 'line-through', color: '#73737330'}]
                   : styles.time}
-              >{moment(localHour).format('LT')}</Text>
+              >{hour}</Text>
+              {reminderDate && reminderTime && (
+                <Text style={
+                  isCompleted
+                    ? [styles.reminderText, {textDecorationLine: 'line-through', color: '#73737330'}]
+                    : styles.reminderText}
+                >Reminder: {moment(reminderDate).format('MMM Do')} at {reminderTime}</Text>
+              )}
             </View>
             <TouchableOpacity onPress={handleDeleteTodo}>
               <MaterialIcons name="delete-outline" size={24} color="#73737340" style={styles.delete} />
@@ -73,5 +81,11 @@ const styles = StyleSheet.create({
       fontSize: 13,
       color: '#a3a3a3',
       fontWeight: '500',
+    },
+    reminderText: {
+      fontSize: 12,
+      color: '#a3a3a3',
+      fontWeight: '400',
+      marginTop: 2,
     }
 });
