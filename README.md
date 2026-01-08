@@ -1,6 +1,6 @@
 # Project Title
 
-To-do list app: Minimal to do list app with reminder feaature.
+Minima (To-do list app): Minimal to do list app with reminder feaature.
 
 ## Description
 
