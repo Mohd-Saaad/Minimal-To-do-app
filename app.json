@@ -1,36 +1,34 @@
 {
   "expo": {
-    "name": "Minima",
-    "slug": "Minima",
+    "name": "TodoApp",
+    "slug": "todo-app",
     "version": "1.0.0",
+    "platforms": ["android", "ios", "web"],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.ecostudios.minima",
-      "buildNumber": "1"
-    },
     "android": {
-      "package": "com.ecostudios.minima",
+      "package": "com.yourname.todoapp",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "ios": {
+      "bundleIdentifier": "com.yourname.todoapp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "10e9b0d6-b99d-43a3-a353-dd3882952660"
+      }
+    },
+    "plugins": [],
+    "owner": "saad75"
   }
 }
